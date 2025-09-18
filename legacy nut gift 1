@@ -1,0 +1,117 @@
+{{$random := randInt 1 1000}}
+
+{{$image := "https://raw.githubusercontent.com/Tartarytar/image/refs/heads/main/0n.png"}}
+{{$rarity := "help ⚪"}}
+{{$flavor := "Oops you broke it, please call for help."}}
+{{$name := "You got a Broken Wallnut ! !"}}
+{{$user := .User.Username}}
+
+{{if and (eq $random 1)}}
+{{print "hi"}}
+ 
+{{else if and (ge $random 1) (le $random 500)}} 
+{{$c1 := cslice
+ "You got a Common Tallnut ! !" 
+ "A tall grumpy nut, who will not let those zombie go above." 
+ "https://raw.githubusercontent.com/Tartarytar/image/refs/heads/main/2.png"
+ "wall47"}}
+
+{{$c2 := cslice 
+ "You got a Common Pumpkin ! !" 
+ "Not a nut, but somehow here? Used the excuse that their cousin is related to sneak in." 
+ "https://raw.githubusercontent.com/Tartarytar/image/refs/heads/main/46.png"}}
+
+{{$c3 := cslice 
+"You got a Common Puff Nut ! !"
+"The smallest, they are always ready. Even if you have to use them as ammo."
+"https://raw.githubusercontent.com/Tartarytar/image/refs/heads/main/4.png"}}
+
+{{$c4 := cslice 
+"You got a Common Peanut ! !"
+"From the very few that actually attack."
+"https://raw.githubusercontent.com/Tartarytar/image/refs/heads/main/5.png"}}
+
+{{$c5 := cslice 
+"You got a Common Frozen Nut ! !"
+"Not to be confused with an Ice nut."
+"https://raw.githubusercontent.com/Tartarytar/image/refs/heads/main/47.png"}}
+
+{{$c6 := cslice 
+"You got a Common Sun Nut ! !"
+"Always looking at the sun rise, a smile for the new day shine to anyone"
+"https://raw.githubusercontent.com/Tartarytar/image/refs/heads/main/6.png"}}
+
+{{$c7 := cslice 
+"You got a Common Cherry Nut ! !"
+"Unlike their relatives, they are quite happily.... happily to explode of course."
+"https://raw.githubusercontent.com/Tartarytar/image/refs/heads/main/7.png"}}
+
+{{$c8 := cslice 
+"You got a Common Chomp Nut ! !"
+"Always hungry, zombie meat is their main diet. the more they eat, the happier they get."
+"https://raw.githubusercontent.com/Tartarytar/image/refs/heads/main/8.png"}}
+
+{{$c9 := cslice 
+"You got a Common Mine Nut ! !"
+"permanently stuck in the ground, but it has it advantages like seing those bullet fly above."
+"https://raw.githubusercontent.com/Tartarytar/image/refs/heads/main/9.png"}}
+
+{{$c10 := cslice 
+"You got a Common Spike Nut ! !"
+"Hard to the touch but a sweet heart."
+"https://raw.githubusercontent.com/Tartarytar/image/refs/heads/main/10.png"}}
+
+{{$c11 := cslice 
+"You got a Common Squash Nut ! !"
+"Not photogenic at all, everytime they take a picture they have a weird face."
+"https://raw.githubusercontent.com/Tartarytar/image/refs/heads/main/11.png"}}
+
+{{$c11 := cslice 
+"You got a Common Squash Nut ! !"
+"Not photogenic at all, everytime they take a picture they have a weird face."
+"https://raw.githubusercontent.com/Tartarytar/image/refs/heads/main/11.png"}}
+
+{{$c11 := cslice 
+"You got a Common Squash Nut ! !"
+"Not photogenic at all, everytime they take a picture they have a weird face."
+"https://raw.githubusercontent.com/Tartarytar/image/refs/heads/main/11.png"}}
+
+{{$c11 := cslice 
+"You got a Common Squash Nut ! !"
+"Not photogenic at all, everytime they take a picture they have a weird face."
+"https://raw.githubusercontent.com/Tartarytar/image/refs/heads/main/11.png"}}
+
+
+
+{{$rand_common := randInt 11}}
+{{$common_msgs := cslice $c1 $c2 $c3 $c4 $c5 $c6 $c7 $c8 $c9 $c10 $c11 }}
+{{$rarity = "Common 🟢"}}
+{{$common_index := (index $common_msgs $rand_common)}}
+{{$name = (index $common_index 0)}}
+{{$flavor = (index $common_index 1)}}
+{{$image = (index $common_index 2)}}
+{{/*$1 :=  dbIncr .user.ID (index $common_index 3) 1*/}}
+{{else}}
+{{print $random}}
+{{end}}
+
+{{ $embed := cembed
+    "title" $name
+    "description" $flavor
+    "color" 8020261
+    "fields" (cslice
+        (sdict "name" "Rarity:" "value" $rarity "inline" true)
+   			 )
+    "author" (sdict
+      "name" "Nut Giftbox"
+      "icon_url" "https://raw.githubusercontent.com/Tartarytar/image/refs/heads/main/nuttypresent.png")
+    "thumbnail" (sdict
+        "url" "https://raw.githubusercontent.com/Tartarytar/image/refs/heads/main/HugeNut-resources.assets-1683-min.png")
+      "image" (sdict
+        "url" $image)
+    	"footer" (sdict
+		"text" $user)
+    }}
+{{ sendMessage nil $embed }}
+
+
