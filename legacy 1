@@ -1,0 +1,194 @@
+{{$random := randInt 1 1000}}
+{{dbSet .User.ID "randrand" $random}}
+
+{{ if $cd := dbGet .User.ID "cooldown" }}
+ {{ deleteResponse 3 }}
+ {{ deleteTrigger }}
+ 💤The wall nuts are sleeping, Come back <t:{{ $cd.ExpiresAt.Unix }}:R>💤
+
+ {{ return }}
+{{ end }}
+{{/* Replace 60 with the desired command cooldown in seconds, also cooldown by galen8183*/}}
+{{ dbSetExpire .User.ID "cooldown" true 60 }}
+
+{{$image := "https://raw.githubusercontent.com/Tartarytar/image/refs/heads/main/0.png"}}
+{{$rarity := "Common 🟢"}}
+{{$flavor := $random}}
+{{$name := "You got a Broken Wallnut ! !"}}
+{{$user := .User.Username}}
+
+
+
+{{if and (ge $random 1) (le $random 40)}} 
+	{{$image = "https://raw.githubusercontent.com/Tartarytar/image/refs/heads/main/2.png"}}
+	{{$name = "You got a Common Tallnut ! !"}}
+	{{$flavor = "A tall grumpy nut, who will not let those zombie go above."}}
+
+{{else if and (ge $random 41) (le $random 80)}} 
+	{{$image = "https://raw.githubusercontent.com/Tartarytar/image/refs/heads/main/46.png"}}
+	{{$name = "You got a Common Pumpkin ? ! !"}}
+	{{$flavor = "Not a nut, but somehow here?? don't blame me for adding filler."}}
+
+{{else if and (ge $random 81) (le $random 120)}} 
+	{{$image = "https://raw.githubusercontent.com/Tartarytar/image/refs/heads/main/4.png"}}
+	{{$name = "You got a Common Puff Nut ! !"}}
+	{{$flavor = "The smallest, they are always ready. Even if you have to use them as ammo."}}
+
+{{else if and (ge $random 121) (le $random 160)}} 
+	{{$image = "https://raw.githubusercontent.com/Tartarytar/image/refs/heads/main/5.png"}}
+	{{$name = "You got a Common Peanut ! !"}}
+	{{$flavor = "From the very few that actually attack."}}
+
+{{else if and (ge $random 161) (le $random 200)}} 
+	{{$image = "https://raw.githubusercontent.com/Tartarytar/image/refs/heads/main/47.png"}}
+	{{$name = "You got a Common Frozen Nut ! !"}}
+	{{$flavor = "Not confuse with an Ice nut."}}
+
+{{else if and (ge $random 201) (le $random 240)}} 
+	{{$image = "https://raw.githubusercontent.com/Tartarytar/image/refs/heads/main/6.png"}}
+	{{$name = "You got a Common Sun Nut ! !"}}
+	{{$flavor = "Truly the shine of the morning, as happy as they can be."}}
+
+{{else if and (ge $random 241) (le $random 280)}} 
+	{{$image = "https://raw.githubusercontent.com/Tartarytar/image/refs/heads/main/7.png"}}
+	{{$name = "You got a Common Cherry Nut ! !"}}
+	{{$flavor = "Not as explosive of a personality compared to other cherries. Will always help you for those pesky enemy cherries."}}
+
+{{else if and (ge $random 281) (le $random 320)}} 
+	{{$image = "https://raw.githubusercontent.com/Tartarytar/image/refs/heads/main/8.png"}}
+	{{$name = "You got a Common Chomp Nut ! !"}}
+	{{$flavor = "Always hungry, zombie meat is their main diet. the more they eat, the happier they get."}}
+
+{{else if and (ge $random 321) (le $random 340)}} 
+	{{$image = "https://raw.githubusercontent.com/Tartarytar/image/refs/heads/main/9.png"}}
+	{{$name = "You got a Common Mine Nut ! !"}}
+	{{$flavor = "permanently stuck in the ground, but it has it advantages like seing those bullet fly above."}}
+
+{{else if and (ge $random 341) (le $random 370)}} 
+	{{$image = "https://raw.githubusercontent.com/Tartarytar/image/refs/heads/main/10.png"}}
+	{{$name = "You got a Common Spike Nut ! !"}}
+	{{$flavor = "Hard to the touch but a sweet heart."}}
+
+{{else if and (ge $random 371) (le $random 430)}} 
+	{{$image = "https://raw.githubusercontent.com/Tartarytar/image/refs/heads/main/11.png"}}
+	{{$name = "You got a Common Squash Nut ! !"}}
+	{{$flavor = "Not photogenic at all, everytime they take a picture they have a weird face."}}
+
+{{else if and (ge $random 431) (le $random 450)}} 
+	{{$image = "https://raw.githubusercontent.com/Tartarytar/image/refs/heads/main/12.png"}}
+	{{$name = "You got a Common Star Nut ! !"}}
+	{{$flavor = "They say they taste like rock candy."}}
+
+{{else if and (ge $random 451) (le $random 480)}} 
+	{{$image = "https://raw.githubusercontent.com/Tartarytar/image/refs/heads/main/13.png"}}
+	{{$name = "You got a Common Float Nut ! !"}}
+	{{$flavor = "Always at your service!"}}
+
+{{else if and (ge $random 481) (le $random 510)}} 
+	{{$image = "https://raw.githubusercontent.com/Tartarytar/image/refs/heads/main/14.png"}}
+	{{$name = "You got a Common Ice Nut ! !"}}
+	{{$flavor = "99% water not let this one be on the sun, please."}}
+
+{{else if and (ge $random 511) (le $random 540)}} 
+	{{$image = "https://raw.githubusercontent.com/Tartarytar/image/refs/heads/main/15.png"}}
+	{{$name = "You got a Common Fire Nut ! !"}}
+	{{$flavor = "Always having an itchy eye, but the more they scratch the worse it get."}}
+
+{{else if and (ge $random 541) (le $random 570)}} 
+	{{$image = "https://raw.githubusercontent.com/Tartarytar/image/refs/heads/main/16.png"}}
+	{{$name = "You got a Common Sea Nut ! !"}}
+	{{$flavor = "The best defense, is the best offense."}}
+
+{{else if and (ge $random 571) (le $random 600)}} 
+	{{$image = "https://raw.githubusercontent.com/Tartarytar/image/refs/heads/main/17.png"}}
+	{{$name = "You got a Common Cabbage Nut ! !"}}
+	{{$flavor = "Is this what a nut salad is?"}}
+
+{{else if and (ge $random 601) (le $random 630)}} 
+	{{$image = "https://raw.githubusercontent.com/Tartarytar/image/refs/heads/main/18.png"}}
+	{{$name = "You got a Common Garlic Nut ! !"}}
+	{{$flavor = "Do not put this one to your salad."}}
+
+{{else if and (ge $random 631) (le $random 650)}} 
+	{{$image = "https://raw.githubusercontent.com/Tartarytar/image/refs/heads/main/48.png"}}
+	{{$name = "You got a Common Bullet Nut ! !"}}
+	{{$flavor = "Is this thing even alive? you may put this one to your salad."}}
+
+{{else if and (ge $random 651) (le $random 670)}} 
+	{{$image = "https://raw.githubusercontent.com/Tartarytar/image/refs/heads/main/19.png"}}
+	{{$name = "You got a Uncommon Doom Nut ! !"}}
+	{{$rarity = "Uncommon 🔵"}}
+	{{$flavor = "Even with all this doom in the world, they are an optimistic with a smile to the world."}}
+
+{{else if and (ge $random 671) (le $random 690)}} 
+	{{$image = "https://raw.githubusercontent.com/Tartarytar/image/refs/heads/main/20.png"}}
+	{{$name = "You got a Uncommon Buck Nut ! !"}}
+	{{$rarity = "Uncommon 🔵"}}
+	{{$flavor = "Unlike what it seems, there a normal nut inside them."}}
+
+{{else if and (ge $random 691) (le $random 710)}} 
+	{{$image = "https://raw.githubusercontent.com/Tartarytar/image/refs/heads/main/21.png"}}
+	{{$name = "You got a Uncommon Butter Nut ! !"}}
+	{{$rarity = "Uncommon 🔵"}}
+	{{$flavor = "Not matter where they go, a piece of butter always fall in their head. Once in the bathroom somehow a butter piece came from the vent."}}
+
+{{else if and (ge $random 711) (le $random 725)}} 
+	{{$image = "https://raw.githubusercontent.com/Tartarytar/image/refs/heads/main/22.png"}}
+	{{$name = "You got a Uncommon Cactus Nut ! !"}}
+	{{$rarity = "Uncommon 🔵"}}
+	{{$flavor = "Somehow soft to the touch but Spiky at heart."}}
+
+{{else if and (ge $random 726) (le $random 750)}} 
+	{{$image = "https://raw.githubusercontent.com/Tartarytar/image/refs/heads/main/23.png"}}
+	{{$name = "You got a Uncommon Hypno Nut ! !"}}
+	{{$rarity = "Uncommon 🔵"}}
+	{{$flavor = "Not tell anyone but they are the strongest here."}}
+
+{{else if and (ge $random 751) (le $random 775)}} 
+	{{$image = "https://raw.githubusercontent.com/Tartarytar/image/refs/heads/main/24.png"}}
+	{{$name = "You got a Uncommon Silver Nut ! !"}}
+	{{$rarity = "Uncommon 🔵"}}
+	{{$flavor = "Actually not humble at all, a penny pincher in everything."}}
+
+{{else if and (ge $random 776) (le $random 800)}} 
+	{{$image = "https://raw.githubusercontent.com/Tartarytar/image/refs/heads/main/25.png"}}
+	{{$name = "You got a Uncommon Bouncer Nut ! !"}}
+	{{$rarity = "Uncommon 🔵"}}
+	{{$flavor = "A very shy nut, always prefer to push other away."}}
+
+{{else if and (ge $random 801) (le $random 815)}} 
+	{{$image = "https://raw.githubusercontent.com/Tartarytar/image/refs/heads/main/26.png"}}
+	{{$name = "You got a Uncommon Melon Nut ! !"}}
+	{{$rarity = "Uncommon 🔵"}}
+	{{$flavor = "Giga Leader nemesis, he lost a match once and he still feels bad."}}
+{{else}}
+{{end}}
+
+{{if le $random 815}} 
+{{ $msg := cembed
+    "title" $name
+    "description" $flavor
+    "color" 8020261
+    "fields" (cslice
+        (sdict "name" "Rarity:" "value" $rarity "inline" true)
+   			 )
+    "author" (sdict
+      "name" "Nut Giftbox"
+      "icon_url" "https://raw.githubusercontent.com/Tartarytar/image/refs/heads/main/nuttypresent.png")
+    "thumbnail" (sdict
+        "url" "https://raw.githubusercontent.com/Tartarytar/image/refs/heads/main/HugeNut-resources.assets-1683-min.png")
+      "image" (sdict
+        "url" $image)
+    	"footer" (sdict
+		"text" $user)
+    }}
+	{{ sendMessage nil $msg }}
+{{end}}
+
+
+
+
+
+
+
+
