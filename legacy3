@@ -1,0 +1,80 @@
+{{$random := toInt (dbGet .User.ID "randrand").Value}}
+{{$image := "https://raw.githubusercontent.com/Tartarytar/image/refs/heads/main/0.png"}}
+{{$rarity := "Common 🟢"}}
+{{$flavor := $random}}
+{{$name := "You got a Broken Wallnut ! !"}}
+{{$user := .User.Username}}
+
+{{if le $random 932}} 
+	{{deleteResponse}}
+
+{{else if and (ge $random 933) (le $random 935)}} 
+	{{$image = "https://raw.githubusercontent.com/Tartarytar/image/refs/heads/main/50n.png"}}
+	{{$name = "You got Mythic Golden Jugger Nut ???! !"}}
+	{{$rarity = "Mythic 🔴"}}
+	{{$flavor = "From a very far land, had to walk all the way here and still was denied access. still only a fanmade."}}
+    {{$1 :=  dbIncr .user.ID "wall47" 1}}
+
+{{else if eq $random 936}} 
+	{{$image = "https://raw.githubusercontent.com/Tartarytar/image/refs/heads/main/41.png"}}
+	{{$name = "You got Legendary Paradox Nut ! !"}}
+	{{$rarity = "Legendary 🟡"}}
+	{{$flavor = "Not from this time. Not from this dimension. Not from this universe, where and how did they got here to begin??"}}
+    {{$1 :=  dbIncr .user.ID "wall48" 1}}
+
+{{else if eq $random 937}} 
+	{{$image = "https://raw.githubusercontent.com/Tartarytar/image/refs/heads/main/43.png"}}
+	{{$name = "You got Legendary Cherrizilla ! !"}}
+	{{$rarity = "Legendary 🟡"}}
+	{{$flavor = "A celebrity among all plants, there even waiting lines just to see them."}}
+    {{$1 :=  dbIncr .user.ID "wall49" 1}}
+
+{{else if eq $random 938}} 
+	{{$image = "https://raw.githubusercontent.com/Tartarytar/image/refs/heads/main/44.png"}}
+	{{$name = "You got Legendary Obsidian Tall Nut ! !"}}
+	{{$rarity = "Legendary 🟡"}}
+	{{$flavor = "The current holder for the toughest nut record, unfortunately they don't like appearing in public"}}
+    {{$1 :=  dbIncr .user.ID "wall50" 1}}
+
+
+{{else if and (ge $random 939) (le $random 980)}} 
+	{{$image = "https://raw.githubusercontent.com/Tartarytar/image/refs/heads/main/51.png"}}
+	{{$name = "You got a Common Bowling Nut ! !"}}
+	{{$flavor = "The absolute behemoth of a destroyer, flattens anything in it path."}}
+
+{{else if and (ge $random 981) (le $random 990)}} 
+	{{$image = "https://raw.githubusercontent.com/Tartarytar/image/refs/heads/main/52.png"}}
+	{{$name = "You got a Rare Bowling Sun Nut ! !"}}
+	{{$rarity = "Rare 🟣"}}
+	{{$flavor = "Royal guards of Twins Solar Nut. they have a big ego because of that, the more the bigger and powerfull they are.... and annoying too."}}
+    {{$1 :=  dbIncr .user.ID "wall51" 1}}
+
+{{else if and (ge $random 990) (le $random 1001)}} 
+	{{$image = "https://raw.githubusercontent.com/Tartarytar/image/refs/heads/main/1.png"}}
+	{{$name = "You got a Common Wallnut ! !"}}
+	{{$flavor = "The most common of all the nuts. You will see this one a lot."}}
+	{{$1 := dbIncr .user.ID "wall1" 1}}
+
+{{else}}
+{{end}}
+
+{{if ge $random 933}} 
+{{ $msg := cembed
+    "title" $name
+    "description" $flavor
+    "color" 8020261
+    "fields" (cslice
+        (sdict "name" "Rarity:" "value" $rarity "inline" true)
+   			 )
+    "author" (sdict
+      "name" "Nut Giftbox"
+      "icon_url" "https://raw.githubusercontent.com/Tartarytar/image/refs/heads/main/nuttypresent.png")
+    "thumbnail" (sdict
+        "url" "https://raw.githubusercontent.com/Tartarytar/image/refs/heads/main/HugeNut-resources.assets-1683-min.png")
+      "image" (sdict
+        "url" $image)
+  	"footer" (sdict
+		"text" $user)
+  }}
+	{{ sendMessage nil $msg }}
+{{end}}
